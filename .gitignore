@@ -1,0 +1,7 @@
+.vscode
+.history
+.vs
+bin/
+obj/
+Web-API/debug.log
+
