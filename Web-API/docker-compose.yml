@@ -1,0 +1,21 @@
+version: '3'
+
+#NETWORK
+networks:
+  TestNetWork:
+    external: true
+
+#SERVICES
+services:
+  web-api:
+    hostname: web-api
+    container_name: web-api
+    image: web-api:v1.0
+    build: 
+         context: ./
+         dockerfile: ./Web-API/Dockerfile
+    restart: always
+    networks:
+      - TestNetWork
+    ports:
+      - 4041:80
