@@ -38,11 +38,5 @@ namespace Web_API.Service.Service
             }
             return await PageListUtility<UserDto>.PageListAsync(queryData.AsNoTracking().ProjectTo<UserDto>(_configuration).OrderByDescending(x => x.UpdateDate), page.PageNumber, page.PageSize);
         }
-
-        public void test()
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

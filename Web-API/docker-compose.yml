@@ -10,10 +10,10 @@ services:
   web-api:
     hostname: web-api
     container_name: web-api
-    image: web-api:v1.0
-    build: 
-         context: ./
-         dockerfile: ./Web-API/Dockerfile
+    image: huynhcuongem7597/web-api:v1.0
+    #build: 
+         #context: ./
+         #dockerfile: ./Web-API/Dockerfile
     restart: always
     networks:
       - TestNetWork
