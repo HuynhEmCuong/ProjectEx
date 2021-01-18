@@ -12,10 +12,14 @@ namespace Web_API.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
         public DbSet<User> Users { get; set; }
+        public DbSet<Building> Building { get; set; }
+        public DbSet<PDC> PDC { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
             modelBuilder.Entity<User>().HasKey(x => new { x.UserID });
+            modelBuilder.Entity<Building>().HasKey(x => new { x.BuildingID });
+            modelBuilder.Entity<PDC>().HasKey(x => new { x.PDCID });
         }
 
     }

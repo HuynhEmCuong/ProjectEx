@@ -47,10 +47,14 @@ namespace Web_API
 
             //Repository
             services.AddScoped<IRepository<User>, Repository<User>>();
+            services.AddScoped<IRepository<Building>, Repository<Building>>();
+            services.AddScoped<IRepository<PDC>, Repository<PDC>>();
 
 
             //Service
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IBuildingService, BuildingService>();
+            services.AddScoped<IPDCService, PDCService>();
 
 
 
