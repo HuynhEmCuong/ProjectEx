@@ -27,7 +27,7 @@ namespace Web_API.Service.Service
         }
 
 
-        public override async Task<PageListUtility<UserDto>> Search(string keyword, PaginationParams page)
+        public override async Task<PageListUtility<UserDto>> Search(string keyword, PaginationParams parms)
         {
             var queryData = _repo.FindAll();
             if (!String.IsNullOrEmpty(keyword))
@@ -36,7 +36,7 @@ namespace Web_API.Service.Service
                                                      x.EmpName.Contains(keyword.ToString()) ||
                                                      x.UpdateBy.Contains(keyword.ToString()));
             }
-            return await PageListUtility<UserDto>.PageListAsync(queryData.AsNoTracking().ProjectTo<UserDto>(_configuration).OrderByDescending(x => x.UpdateDate), page.PageNumber, page.PageSize);
+            return await PageListUtility<UserDto>.PageListAsync(queryData.AsNoTracking().ProjectTo<UserDto>(_configuration).OrderByDescending(x => x.UpdateDate), parms.PageNumber, parms.PageSize);
         }
     }
 }

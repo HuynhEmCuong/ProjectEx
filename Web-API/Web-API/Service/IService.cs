@@ -8,7 +8,7 @@ namespace Web_API.Service
 {
     public interface IService<T> where T : class
     {
-        Task<List<T>> GetALl();
+        Task<List<T>> GetALL();
         Task<OperationResult> Add(T model);
         Task<OperationResult> Update(T model);
         Task<OperationResult> Delete(T model);

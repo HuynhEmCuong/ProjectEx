@@ -9,6 +9,8 @@ namespace Web_API.Helpers
         public DtoToEfMappingProfile()
         {
             CreateMap<User, UserDto>();
+            CreateMap<PDC, PDCDto>();
+            CreateMap<Building, BuildingDto>();
           
         }
     }
