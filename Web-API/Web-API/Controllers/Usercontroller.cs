@@ -24,5 +24,9 @@ namespace Web_API.Controllers
 
         [HttpGet, Route(ApiRouter.User.SerachUser)]
         public async Task<IActionResult> SearchUser([FromQuery]PaginationParams page, string keyword) => Ok(await _service.Search(keyword,page));
+
+
+        [HttpGet("Test")]
+        public async Task<IActionResult> TestUserMap() => Ok(await _service.MapUserDifferentProperTy());
     }
 }

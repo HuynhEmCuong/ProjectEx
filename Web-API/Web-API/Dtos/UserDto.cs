@@ -34,5 +34,10 @@ namespace Web_API.Dtos
 
         [StringLength(5)]
         public string Roles { get; set; }
+
+        public string UserNameL { get; set; }
+
+       
+
     }
 }

@@ -14,5 +14,8 @@ namespace Web_API.Dtos
         public string PDCCode { get; set; }
 
         public bool? Visible { get; set; }
+
+        public string NameCode { get; set; }
+
     }
 }

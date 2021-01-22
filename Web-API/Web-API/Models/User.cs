@@ -36,5 +36,7 @@ namespace Web_API.Models
 
         [StringLength(5)]
         public string Roles { get; set; }
+
+       
     }
 }

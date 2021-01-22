@@ -10,8 +10,8 @@ using Web_API.Service.Interface;
 
 namespace Web_API.Controllers
 {
-    
-    public class PDCController:BaseController
+
+    public class PDCController : BaseController
     {
         private readonly IPDCService _service;
 
@@ -20,10 +20,10 @@ namespace Web_API.Controllers
             _service = service;
         }
 
-        [HttpGet,Route(ApiRouter.PDC.GetAllPDC)]
+        [HttpGet, Route(ApiRouter.PDC.GetAllPDC)]
         public async Task<IActionResult> GetAllPDC() => Ok(await _service.GetALL());
 
-        [HttpGet,Route(ApiRouter.PDC.SerachPDC)]
+        [HttpGet, Route(ApiRouter.PDC.SerachPDC)]
         public async Task<IActionResult> SearchPDC([FromQuery] PaginationParams parms, string keyword) => Ok(await _service.Search(keyword, parms));
 
         [HttpPost, Route(ApiRouter.PDC.AddPDC)]
@@ -35,6 +35,9 @@ namespace Web_API.Controllers
 
 
         [HttpDelete, Route(ApiRouter.PDC.DeletePDC)]
-       public async Task<IActionResult> DeletePDC(PDCDto model) => Ok(await _service.Delete(model));
+        public async Task<IActionResult> DeletePDC(PDCDto model) => Ok(await _service.Delete(model));
+
+        [HttpGet("TestMapper")]
+        public async Task<IActionResult> TestMapper() => Ok(await _service.TestMapper());
     }
 }

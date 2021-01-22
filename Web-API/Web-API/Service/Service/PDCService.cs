@@ -19,14 +19,15 @@ namespace Web_API.Service.Service
         private readonly IMapper _mapper;
         private readonly MapperConfiguration _configuration;
 
-        public PDCService(IRepository<PDC> repo, IMapper mapper, MapperConfiguration configuration):base(repo,mapper,configuration)
+        public PDCService(IRepository<PDC> repo, IMapper mapper, MapperConfiguration configuration) : base(repo, mapper, configuration)
         {
             _repo = repo;
             _mapper = mapper;
             _configuration = configuration;
         }
 
-        public  override async Task<PageListUtility<PDCDto>> Search(string keyword, PaginationParams parms)
+   
+        public override async Task<PageListUtility<PDCDto>> Search(string keyword, PaginationParams parms)
         {
             var query = _repo.FindAll();
 
@@ -35,7 +36,20 @@ namespace Web_API.Service.Service
                 query = query.Where(x => x.PDCName.Contains(keyword) || x.PDCCode.Contains(keyword));
             }
 
-            return await PageListUtility<PDCDto>.PageListAsync(query.AsNoTracking().ProjectTo<PDCDto>(_configuration), parms.PageNumber,parms.PageSize);
+            return await PageListUtility<PDCDto>.PageListAsync(query.AsNoTracking().ProjectTo<PDCDto>(_configuration), parms.PageNumber, parms.PageSize);
         }
+
+        public async Task<List<PDCDto>> TestMapper()
+        {
+            var result = _mapper.Map<List<PDCDto>>(_repo.FindAll());
+            return await Task.FromResult(result);
+        }
+
+        public async Task<string> SavePDCMapper()
+        {
+            var query = _repo.FindAll();
+            throw new NotImplementedException();
+        }
+
     }
 }
