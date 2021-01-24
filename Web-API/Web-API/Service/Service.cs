@@ -74,7 +74,7 @@ namespace Web_API.Service
             return operationResult;
         }
 
-        public virtual async Task<List<T>> GetALl()
+        public virtual async Task<List<T>> GetALL()
         {
             return await _repo.FindAll().AsNoTracking().ProjectTo<T>(_configuration).ToListAsync();
         }

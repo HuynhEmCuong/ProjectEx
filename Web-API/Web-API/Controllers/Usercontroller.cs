@@ -21,7 +21,7 @@ namespace Web_API.Controllers
 
 
         [HttpGet, Route(ApiRouter.User.GetAllUser)]
-        public async Task<IActionResult> GetAllUser() => Ok(await _service.GetALl());
+        public async Task<IActionResult> GetAllUser() => Ok(await _service.GetALL());
 
         [HttpGet, Route(ApiRouter.User.SerachUser)]
         public async Task<IActionResult> SearchUser([FromQuery] PaginationParams page, string keyword) => Ok(await _service.Search(keyword, page));

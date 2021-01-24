@@ -26,8 +26,18 @@ namespace Web_API.Service.Service
             _configuration = configuration;
         }
 
+        public async Task<UserDto> MapUserDifferentProperTy()
+        {
+            var data = _mapper.Map<User, UserDto>(_repo.FindAll().FirstOrDefault());
+            return await Task.FromResult(data);
+        }
 
-        public override async Task<PageListUtility<UserDto>> Search(string keyword, PaginationParams page)
+        public Task<OperationResult> SaveListMap(List<UserDto> models)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override async Task<PageListUtility<UserDto>> Search(string keyword, PaginationParams parms)
         {
             var queryData = _repo.FindAll();
             if (!String.IsNullOrEmpty(keyword))
@@ -36,7 +46,8 @@ namespace Web_API.Service.Service
                                                      x.EmpName.Contains(keyword.ToString()) ||
                                                      x.UpdateBy.Contains(keyword.ToString()));
             }
-            return await PageListUtility<UserDto>.PageListAsync(queryData.AsNoTracking().ProjectTo<UserDto>(_configuration).OrderByDescending(x => x.UpdateDate), page.PageNumber, page.PageSize);
+            return await PageListUtility<UserDto>.PageListAsync(queryData.AsNoTracking().ProjectTo<UserDto>(_configuration).OrderByDescending(x => x.UpdateDate), parms.PageNumber, parms.PageSize);
         }
+
     }
 }
