@@ -8,8 +8,8 @@ namespace Web_API.Helpers
     {
         public EfToDtoMappingProfile()
         {
-            CreateMap<UserDto, User>();
-            //CreateMap<PDCDto, PDC>();
+            //CreateMap<UserDto, User>();
+            CreateMap<PDCDto, PDC>().ReverseMap();
             CreateMap<BuildingDto, Building>();
         }
 

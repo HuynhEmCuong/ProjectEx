@@ -15,6 +15,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Web_API.Data;
 using Web_API.Helpers;
+using Web_API.IInstaller;
 using Web_API.Models;
 using Web_API.Repository;
 using Web_API.Service.Interface;
@@ -44,18 +45,7 @@ namespace Web_API
             });
             services.AddSingleton(AutoMapperConfig.RegisterMappings());
 
-
-            //Repository
-            services.AddScoped<IRepository<User>, Repository<User>>();
-            services.AddScoped<IRepository<Building>, Repository<Building>>();
-            services.AddScoped<IRepository<PDC>, Repository<PDC>>();
-
-
-            //Service
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IBuildingService, BuildingService>();
-            services.AddScoped<IPDCService, PDCService>();
-
+            services.InstallServicesInAssembly(Configuration);
 
 
             //Swagger

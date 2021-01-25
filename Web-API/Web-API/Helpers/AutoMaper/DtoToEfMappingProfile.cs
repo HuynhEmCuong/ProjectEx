@@ -8,21 +8,21 @@ namespace Web_API.Helpers
     {
         public DtoToEfMappingProfile()
         {
-            CreateMap<User, UserDto>();
+            CreateMap<User, UserDto>().ReverseMap();
             CreateMap<Building, BuildingDto>();
-            CreateMap<PDC, PDCDto>().ForMember(
+            CreateMap<PDCDto, PDC>().ForMember(
                 s => s.Visible,
                 d =>
                 {
                     d.Condition(src => src.Visible == true);
                     d.MapFrom(src => src.Visible);
-                }).ForMember(
-                s => s.NameCode,
-                d => d.MapFrom(r => r.PDCCode))
-                .ReverseMap();
+                }).ReverseMap().ForMember(
+                  s => s.NameCode,
+                  d => d.MapFrom(r => r.PDCCode));
 
-
-            CreateMap<PDC, PDCMapperDto>();
+            //CreateMap<PDC, PDCDto>().ForMember(
+            //    s => s.
+            //    );
 
         }
     }
