@@ -4,6 +4,9 @@ import { PdcComponent } from './pdc/pdc.component';
 import { CommonModule } from "@angular/common";
 import { PageRoutingModule } from "./pages.routing.module";
 import { BuildingComponent } from "./building/building.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+
+
 
 
 @NgModule({
@@ -11,7 +14,7 @@ import { BuildingComponent } from "./building/building.component";
         CommonModule,
         PageRoutingModule
     ],
-    declarations:[UserComponent, PdcComponent,BuildingComponent],
+    declarations:[UserComponent, PdcComponent,BuildingComponent,DashboardComponent],
 
 })
 
