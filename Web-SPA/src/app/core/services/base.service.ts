@@ -33,7 +33,7 @@ export class BaseService<T> implements IBaseService<T> {
   }
 
   getAll(): Observable<T[]> {
-    return this.http.get<T[]>(`${API_URL}${this.entity}/Get${this.entity}`);
+    return this.http.get<T[]>(`${API_URL}/${this.entity}/GetAll${this.entity}`);
   }
 
   search(keyword: string, pagination: Pagination): Observable<PaginationResult<T>> {
@@ -44,4 +44,7 @@ export class BaseService<T> implements IBaseService<T> {
     }
     return this.http.post<PaginationResult<T>>(`${API_URL}/${this.entity}/Search${this.entity}?keyword=${keyword}`, {}, { params });
   }
+
+
+
 }

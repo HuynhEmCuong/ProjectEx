@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { PDC } from '../models/pdc';
+import { Building } from '../models/building';
 import { BaseService } from './base.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PdcService extends BaseService<PDC> {
+export class BuildingService extends BaseService<Building> {
 
-  constructor(public http: HttpClient) {
-    super(http, "PDC")
-  }
+constructor( public _http:HttpClient) {
+  super(_http,"Building")
+ }
 
 }

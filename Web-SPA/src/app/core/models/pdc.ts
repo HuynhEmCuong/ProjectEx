@@ -1,7 +1,7 @@
-export interface PDCDto {
-    pDCID: number;
-    pDCName: string;
-    pDCCode: string;
+export interface PDC{
+    pdcID: number;
+    pdcName: string;
+    pdcCode: string;
     visible: boolean | null;
     nameCode: string;
 }

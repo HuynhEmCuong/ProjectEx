@@ -1,0 +1,77 @@
+<div
+    bsModal
+    #editModal="bs-modal"
+    class="modal fade"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="dialog-sizes-name2"
+>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4
+                    id="dialog-sizes-name2"
+                    class="modal-title pull-left"
+                >
+                    Small modal
+                </h4>
+                <button
+                    type="button"
+                    class="close pull-right"
+                    aria-label="Close"
+                    (click)="editModal.hide()"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form
+                    [formGroup]="formData"
+                    (ngSubmit)="addOrEdit()"
+                >
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">PDC Name</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="PDC Name"
+                            formControlName="pdcName"
+                            [ngClass]="{'is-invalid': formData.controls.pdcName?.errors}"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">PDC Code</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="PDC Code"
+                            formControlName="pdcCode"
+                        >
+                    </div>
+                    <div class="form-check">
+                        <label class="switch switch-label switch-pill switch-success">
+                            <input
+                                type="checkbox"
+                                class="switch-input"
+                                checked
+                                formControlName="visible"
+                            >
+                            <span
+                                class="switch-slider"
+                                data-checked="On"
+                                data-unchecked="Off"
+                            ></span>
+                        </label>
+                    </div>
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        [disabled] = "formData.invalid"
+                    >
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

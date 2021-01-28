@@ -8,7 +8,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'PDC',
-    url: '/dashboard',
+    url: '/page/pdc',
     icon: 'icon-speedometer',
   },
   {

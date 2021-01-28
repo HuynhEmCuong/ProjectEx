@@ -40,9 +40,12 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/share.module';
 
 @NgModule({
   imports: [
+    SharedModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -52,6 +55,7 @@ import { ChartsModule } from 'ng2-charts';
     AppHeaderModule,
     AppSidebarModule,
     PerfectScrollbarModule,
+    HttpClientModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
