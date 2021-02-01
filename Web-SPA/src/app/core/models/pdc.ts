@@ -1,5 +1,5 @@
 export interface PDC{
-    pdcID: number;
+    pdcid: number;
     pdcName: string;
     pdcCode: string;
     visible: boolean | null;

@@ -20,7 +20,8 @@ export class PdcComponent implements OnInit {
 
   loadData() {
     this._pdcService.getAll().subscribe(res => {
-      this.pdcList = res
+      this.pdcList = res;
+      console.log(res);
     })
   }
 

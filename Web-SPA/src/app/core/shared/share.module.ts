@@ -6,10 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
+        CommonModule,
         ReactiveFormsModule,
         HttpClientModule,
     ],
-    exports: [FormsModule, ReactiveFormsModule,],
+    exports: [CommonModule,FormsModule, ReactiveFormsModule,],
     declarations: [],
     providers: [],
 })

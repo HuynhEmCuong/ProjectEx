@@ -36,7 +36,7 @@
                             class="form-control"
                             placeholder="PDC Name"
                             formControlName="pdcName"
-                            [ngClass]="{'is-invalid': formData.controls.pdcName?.errors}"
+                            [ngClass]="{'is-invalid': formData.controls.pdcName?.errors , 'is-valid': !formData.controls.pdcName?.errors }"
                         >
                     </div>
                     <div class="form-group">
@@ -46,7 +46,10 @@
                             class="form-control"
                             placeholder="PDC Code"
                             formControlName="pdcCode"
+                            [ngClass]="{'is-invalid': formData.controls.pdcCode?.errors  ,'is-valid': !formData.controls.pdcCode?.errors  }"
                         >
+
+                        <pre>{{formData.get("pdcCode").errors?.required}}</pre>
                     </div>
                     <div class="form-check">
                         <label class="switch switch-label switch-pill switch-success">
@@ -66,7 +69,7 @@
                     <button
                         type="submit"
                         class="btn btn-primary"
-                        [disabled] = "formData.invalid"
+                        [disabled]="formData.invalid"
                     >
                         Submit
                     </button>
@@ -74,4 +77,20 @@
             </div>
         </div>
     </div>
+
+    <ng-template
+        #NotifyError
+        let-lable="lable"
+        let-length="length"
+        let-checkRequied="checkRequied"
+        let-checkMaxLength="checkLength"
+    >
+        <div *ngIf="checkRequied">
+            <span>{{lable}}is requied</span>
+        </div>
+
+        <div *ngIf="checkMaxLength">
+            <span>{{lable}} max length {{length}}</span>
+        </div>
+    </ng-template>
 </div>

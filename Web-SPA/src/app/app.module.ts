@@ -41,7 +41,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { SharedModule } from './shared/share.module';
+import { SharedModule } from './core/shared/share.module';
 
 @NgModule({
   imports: [
