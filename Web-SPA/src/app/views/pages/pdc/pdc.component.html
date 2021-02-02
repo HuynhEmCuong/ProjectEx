@@ -21,38 +21,21 @@
                             <td>{{item.pdcCode}}</td>
                             <td>{{item.pdcName}}</td>
                             <td>
-                                <span
-                                    class="badge badge-success"
-                                    *ngIf="item.visible"
-                                >
+                                <span class="badge badge-success" *ngIf="item.visible">
                                     Active
                                 </span>
-                                <span
-                                    class="badge badge-secondary"
-                                    *ngIf="!item.visible"
-                                >
+                                <span class="badge badge-secondary" *ngIf="!item.visible">
                                     InActive
                                 </span>
                             </td>
                             <td>
-                                <div
-                                    class="btn-group"
-                                    role="group"
-                                    aria-label="Basic example"
-                                >
-                                    <button
-                                        type="button"
-                                        class="btn btn-warning"
-                                        (click)="editItem(item)"
-                                    >
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-warning" (click)="editItem(item)">
                                         <i class="fa fa-pencil"></i>
                                         Edit
                                     </button>
 
-                                    <button
-                                        type="button"
-                                        class="btn btn-danger"
-                                    >
+                                    <button type="button" class="btn btn-danger">
                                         <i class="fa fa-remove"></i>
                                         Delete
                                     </button>
@@ -64,5 +47,5 @@
             </div>
         </div>
     </div>
-    <app-pdc-edit-modal #modal [item] ="itemPDC"></app-pdc-edit-modal>
+    <app-pdc-edit-modal #modal [item]="itemPDC" (load)="loadData()"></app-pdc-edit-modal>
 </div>

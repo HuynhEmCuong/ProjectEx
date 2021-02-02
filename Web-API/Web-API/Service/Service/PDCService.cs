@@ -44,14 +44,5 @@ namespace Web_API.Service.Service
             var result = _mapper.Map<List<PDCDto>>(_repo.FindAll());
             return await Task.FromResult(result);
         }
-
-        public async Task<string> SavePDCMapper()
-        {
-            var query = _repo.FindAll();
-            throw new NotImplementedException();
-        }
-
-   
-
     }
 }

@@ -15,6 +15,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Web_API.Data;
 using Web_API.Helpers;
+using Web_API.Helpers.Hubs;
 using Web_API.IInstaller;
 using Web_API.Models;
 using Web_API.Repository;
@@ -46,7 +47,7 @@ namespace Web_API
             services.AddSingleton(AutoMapperConfig.RegisterMappings());
 
             services.InstallServicesInAssembly(Configuration);
-
+            services.AddSignalR();
 
             //Swagger
             services.AddSwaggerGen(c =>
@@ -77,6 +78,7 @@ namespace Web_API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<NotifyMessage>("/NotifyMessage");
             });
 
             //Swagger

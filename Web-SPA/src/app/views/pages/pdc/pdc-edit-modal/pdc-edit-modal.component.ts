@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { PDC } from '../../../../core/models/pdc';
+import { SignalService } from '../../../../core/services/hubs/signal.service';
 import { PdcService } from '../../../../core/services/pdc.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { PdcService } from '../../../../core/services/pdc.service';
 })
 export class PdcEditModalComponent implements OnInit {
   @ViewChild('editModal', { static: false }) childModal: ModalDirective;
+  @Output() load =  new EventEmitter<boolean>();
   formData: FormGroup;
   checkAdd: boolean = true;
   @Input() set item(item: PDC) {
@@ -21,7 +23,9 @@ export class PdcEditModalComponent implements OnInit {
     }
   };
 
-  constructor(private fb: FormBuilder, private _pdcService: PdcService) { }
+
+
+  constructor(private fb: FormBuilder, private _pdcService: PdcService , private _signal :SignalService) { }
 
   ngOnInit() {
   }
@@ -63,7 +67,10 @@ export class PdcEditModalComponent implements OnInit {
     
     if (data.success) {
       alert("Ok")
+      // this._signal.sendMessage("OK");
+      this._signal.createHubConnection()
     }
+    this.load.emit(true)
     this.hideModal();
     this.formData.reset()
   }
