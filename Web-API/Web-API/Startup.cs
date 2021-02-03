@@ -15,6 +15,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Web_API.Data;
 using Web_API.Helpers;
+using Web_API.Helpers.Hubs;
 using Web_API.IInstaller;
 using Web_API.Models;
 using Web_API.Repository;
@@ -37,7 +38,6 @@ namespace Web_API
         {
             services.AddControllers();
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IMapper>(sp =>
             {
@@ -46,7 +46,7 @@ namespace Web_API
             services.AddSingleton(AutoMapperConfig.RegisterMappings());
 
             services.InstallServicesInAssembly(Configuration);
-
+            services.AddSignalR();
 
             //Swagger
             services.AddSwaggerGen(c =>
@@ -63,6 +63,12 @@ namespace Web_API
             }
 
             app.UseHttpsRedirection();
+            app.UseCors(x => x.AllowAnyHeader()
+                      .AllowAnyMethod()
+                      .AllowCredentials()
+                      .WithOrigins(
+                       "http://localhost:4200"
+                       ));
 
             app.UseRouting();
 
@@ -71,6 +77,7 @@ namespace Web_API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<NotifyMessage>("/NotifyMessage");
             });
 
             //Swagger

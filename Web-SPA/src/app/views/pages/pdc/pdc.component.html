@@ -1,1 +1,51 @@
-<p>pdc works!</p>
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-header">
+            <button class="btn btn-primary" (click)="editItem(null)">Add </button>
+        </div>
+        <div class="card-boody">
+            <div class="col-md-7">
+                <table class="table mt-3 table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">PDCName</th>
+                            <th scope="col">PDCCode</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of pdcList; let i = index">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{item.pdcCode}}</td>
+                            <td>{{item.pdcName}}</td>
+                            <td>
+                                <span class="badge badge-success" *ngIf="item.visible">
+                                    Active
+                                </span>
+                                <span class="badge badge-secondary" *ngIf="!item.visible">
+                                    InActive
+                                </span>
+                            </td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-warning" (click)="editItem(item)">
+                                        <i class="fa fa-pencil"></i>
+                                        Edit
+                                    </button>
+
+                                    <button type="button" class="btn btn-danger">
+                                        <i class="fa fa-remove"></i>
+                                        Delete
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <app-pdc-edit-modal #modal [item]="itemPDC" (load)="loadData()"></app-pdc-edit-modal>
+</div>

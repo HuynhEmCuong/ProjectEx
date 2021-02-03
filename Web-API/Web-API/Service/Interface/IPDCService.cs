@@ -11,6 +11,5 @@ namespace Web_API.Service.Interface
     {
         Task<List<PDCDto>> TestMapper();
 
-        Task<string> SavePDCMapper();
     }
 }

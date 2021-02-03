@@ -15,6 +15,7 @@ namespace Web_API.Routes
             public const string GetAllUser = "GetAllUser";
             public const string SerachUser = "SearchUser";
 
+            public const string UpLoadUser = "UpLoadUser";
         }
 
         public static class PDC

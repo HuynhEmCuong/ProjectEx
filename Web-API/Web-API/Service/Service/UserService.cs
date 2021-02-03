@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Web_API.Dtos;
@@ -18,12 +21,14 @@ namespace Web_API.Service.Service
         private readonly IRepository<User> _repo;
         private readonly IMapper _mapper;
         private readonly MapperConfiguration _configuration;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public UserService(IRepository<User> repo, IMapper mapper, MapperConfiguration configuration) : base(repo, mapper, configuration)
+        public UserService(IRepository<User> repo, IMapper mapper, MapperConfiguration configuration, IWebHostEnvironment webHostEnvironment) : base(repo, mapper, configuration)
         {
             _repo = repo;
             _mapper = mapper;
             _configuration = configuration;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public async Task<UserDto> MapUserDifferentProperTy()
@@ -49,5 +54,34 @@ namespace Web_API.Service.Service
             return await PageListUtility<UserDto>.PageListAsync(queryData.AsNoTracking().ProjectTo<UserDto>(_configuration).OrderByDescending(x => x.UpdateDate), parms.PageNumber, parms.PageSize);
         }
 
+        public async Task<OperationResult> UpLoadFile(IFormFile file)
+        {
+            OperationResult result ;
+
+            string folderPath = _webHostEnvironment.WebRootPath + $@"/upload/";
+
+            string path = Path.Combine(folderPath, file.FileName);
+
+            try
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+                using (FileStream fs = File.Create(path))
+                {
+                    file.CopyTo(fs);
+                    fs.Flush();
+                }
+                result = new OperationResult { Message = "upload file success ", Success = true };
+            }
+            catch (Exception ex)
+            {
+
+                result = new OperationResult { Message = ex.ToString(), Success = true };
+            }
+
+            return await Task.FromResult(result);
+        }
     }
 }

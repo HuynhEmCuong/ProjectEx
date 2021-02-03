@@ -18,6 +18,7 @@ namespace Web_API.IInstaller
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IBuildingService, BuildingService>();
             services.AddScoped<IPDCService, PDCService>();
+            services.AddScoped<IAuthService, AuthService>();
 
         }
     }
