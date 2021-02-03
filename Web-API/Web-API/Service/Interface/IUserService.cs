@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace Web_API.Service.Interface
         Task<UserDto> MapUserDifferentProperTy();
 
         Task<OperationResult> SaveListMap(List<UserDto> models);
+
+        Task<OperationResult> UpLoadFile(IFormFile file);
     }
 
 }

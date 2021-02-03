@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,13 @@ namespace Web_API.Controllers
 
         [HttpPost, Route(ApiRouter.User.AddUser)]
         public async Task<IActionResult> AddUser(UserDto user) => Ok(await _service.Add(user));
+
+
+        [HttpPost, Route(ApiRouter.User.UpLoadUser)]
+        public async Task<IActionResult> UpLoadFile(IFormFile file)
+        {
+            return Ok(await _service.UpLoadFile(file));
+        }
 
     }
 }

@@ -38,7 +38,6 @@ namespace Web_API
         {
             services.AddControllers();
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IMapper>(sp =>
             {

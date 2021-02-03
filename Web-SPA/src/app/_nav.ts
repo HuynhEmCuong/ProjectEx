@@ -3,7 +3,7 @@ import { INavData } from '@coreui/angular';
 export const navItems: INavData[] = [
   {
     name: 'User',
-    url: '/user',
+    url: '/page/user',
     icon: 'icon-speedometer',
   },
   {
