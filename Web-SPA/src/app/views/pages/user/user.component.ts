@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../../core/services/user.service';
 declare var jQuery: any;
 @Component({
   selector: 'app-user',
@@ -7,7 +8,7 @@ declare var jQuery: any;
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _userService: UserService) { }
 
   ngOnInit(): void {
 
@@ -15,8 +16,11 @@ export class UserComponent implements OnInit {
   }
 
 
-  uploadFile(event) {
+  async uploadFile(event) {
     const file = event.target.files[0];
+    const data = await this._userService.uploadFile(file).then();
+    alert(data.message);
+
   }
 
 }
