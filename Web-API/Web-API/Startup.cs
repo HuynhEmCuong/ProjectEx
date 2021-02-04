@@ -67,7 +67,8 @@ namespace Web_API
                       .AllowAnyMethod()
                       .AllowCredentials()
                       .WithOrigins(
-                       "http://localhost:4200"
+                       "http://localhost:4200",
+                       "http://10.4.4.151:4042"
                        ));
 
             app.UseRouting();

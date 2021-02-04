@@ -10,9 +10,7 @@ import { environment } from '../../../environments/environment';
 const API_URL = environment.apiUrl
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class BaseService<T> implements IBaseService<T> {
 
   constructor(

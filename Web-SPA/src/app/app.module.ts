@@ -42,7 +42,18 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './core/shared/share.module';
+import { AuthService } from './core/services/auth.service';
+import { BuildingService } from './core/services/building.service';
+import { PdcService } from './core/services/pdc.service';
+import { UserService } from './core/services/user.service';
 
+
+const Service = [
+  AuthService,
+  BuildingService,
+  PdcService,
+  UserService
+]
 @NgModule({
   imports: [
     SharedModule,
@@ -71,7 +82,7 @@ import { SharedModule } from './core/shared/share.module';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }],
-  bootstrap: [ AppComponent ]
+  }, ...Service],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

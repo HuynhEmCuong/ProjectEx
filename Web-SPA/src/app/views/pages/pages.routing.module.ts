@@ -26,7 +26,7 @@ export const routes: Routes = [
         data: {
             title: 'building'
         }
-    }
+    },
     {
         path: 'pdc',
         component: PdcComponent,

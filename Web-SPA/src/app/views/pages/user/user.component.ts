@@ -14,8 +14,6 @@ export class UserComponent implements OnInit {
 
 
   }
-
-
   async uploadFile(event) {
     const file = event.target.files[0];
     const data = await this._userService.uploadFile(file).then();
